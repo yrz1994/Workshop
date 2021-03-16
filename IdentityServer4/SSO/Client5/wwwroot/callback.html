@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="oidc-client.js"></script>
+    <script>
+        //new Oidc.UserManager({ response_mode: "query" }).signinRedirectCallback().then(function () {
+        //    //window.location = "index.html";
+        //}).catch(function (e) {
+        //    console.log(e);
+        //});
+
+        function getQueryString(name) {
+            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            }
+            return null;
+        }
+        var hash = window.location.href;
+        var code = getQueryString('code');
+        console.log('code:' + code);
+
+        var url = 'https://testscrmidentity.auroramall.com.cn/connect/token';
+        var formData = new FormData();
+        formData.append('client_id', 'OAMobile');
+        formData.append('code', code);
+        formData.append('redirect_uri', 'http://localhost:8080/callback.html');
+        formData.append('grant_type', 'authorization_code');
+        formData.append('code_verifier', '');
+      
+
+        $.ajax({
+            url: 'https://testscrmidentity.auroramall.com.cn/connect/token',
+            method: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            cache: false,
+            success: function (data) {
+                console.log(data);
+                window.location = "/";
+                localStorage.setItem('token', data.access_token);
+                sessionStorage.setItem('login', 'success');
+            },
+            error: function (err) {
+                console.error(err);
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+﻿syntax = "proto3";
+
+package gRPCDemo.Protocol;
+
+service HelloService{
+  rpc SayHello(HelloRequest) returns (HelloReply){}
+}
+
+message HelloRequest {
+  string Name = 1;
+}
+
+message HelloReply {
+  string Response = 1;
+}
