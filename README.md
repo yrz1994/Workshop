@@ -6,3 +6,5 @@
 3. [ELK技术分享](https://github.com/yrz1994/Workshop/tree/main/ELK) 2020年02月07日
 4. [消息队列-RabbitMQ技术分享](https://github.com/yrz1994/Workshop/tree/main/RabbitMQ) 2020年09月11日
 5. [服务发现与配置中心-Consul技术分享](https://github.com/yrz1994/Workshop/tree/main/Consul) 2021年03月15日
+6. [PowerPlatform调研分享](https://github.com/yrz1994/Workshop/tree/main/PowerPlatform) 2021年04月10日
+7. [异步编程注意事项](https://github.com/yrz1994/AsynchronousDemo) 2021年04月19日
